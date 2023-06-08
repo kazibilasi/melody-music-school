@@ -1,0 +1,86 @@
+[
+  {
+    "musicInstructorName": "John Smith",
+    "musicInstructorAbout": "Bachelor of Music Education",
+    "Email": "instructor1@example.com",
+    "ratings": 4.5,
+    "image": "https://cso.org/media/ezwdc3rv/itzhak-perlman-pink-vest.jpg?mode=max&quality=80&width=1024&upscale=false"
+  },
+  {
+    "musicInstructorName": "Emily Johnson",
+    "musicInstructorAbout": "Master of Music Performance",
+    "Email": "instructor2@example.com",
+    "ratings": 3.8,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJztyklfvYb_rCqGb1B2d6c-Yvg7YURIMEBQ&usqp=CAU"
+  },
+  {
+    "musicInstructorName": "Michael Brown",
+    "musicInstructorAbout": "Doctor of Musical Arts",
+    "Email": "instructor3@example.com",
+    "ratings": 4.2,
+    "image": "https://melodypayne.com/wp-content/uploads/2020/06/IMG_1523-1-1100x1002.jpeg"
+  },
+  {
+    "musicInstructorName": "Sophia Davis",
+    "musicInstructorAbout": "Certified Music Therapist",
+    "Email": "instructor4@example.com",
+    "ratings": 4.7,
+    "image": "https://www.dennisfrehse.com/wp/wp-content/uploads/2021/11/online-drum-lessons-dennis-frehse-japan-scaled.jpeg"
+  },
+  {
+    "musicInstructorName": "Daniel Wilson",
+    "musicInstructorAbout": "Jazz and Improvisation Specialist",
+    "Email": "instructor5@example.com",
+    "ratings": 4.1,
+    "image": "https://i0.wp.com/ismw.org/wp-content/uploads/2019/01/Flute-Lessons-for-Children-in-Bethesda-1.jpg?resize=940%2C600&ssl=1"
+  },
+  {
+    "musicInstructorName": "Olivia Thompson",
+    "musicInstructorAbout": "Music Composition Expert",
+    "Email": "instructor6@example.com",
+    "ratings": 4.9,
+    "image": "https://www.macewan.ca/academics/faculties-schools/school-of-continuing-education/conservatory-of-music/music-teachers/conserv-dan-davis/conserv-instructor-image.jpg"
+  },
+  {
+    "musicInstructorName": "Benjamin Martinez",
+    "musicInstructorAbout": "Vocal Technique Instructor",
+    "Email": "instructor7@example.com",
+    "ratings": 4.6,
+    "image": "https://lh5.googleusercontent.com/p/AF1QipMY71aUtQ_R_yFShstBmriMKKnlti3Ny3dadVaJ=w408-h272-k-no"
+  },
+  {
+    "musicInstructorName": "Emma Wilson",
+    "musicInstructorAbout": "Piano Pedagogy Specialist",
+    "Email": "instructor8@example.com",
+    "ratings": 4.3,
+    "image": "https://i0.wp.com/ismw.org/wp-content/uploads/2019/01/Flute-Lessons-for-Children-in-Bethesda-1.jpg?resize=940%2C600&ssl=1"
+  },
+  {
+    "musicInstructorName": "Lucas Anderson",
+    "musicInstructorAbout": "Guitar Virtuoso",
+    "Email": "instructor9@example.com",
+    "ratings": 4.0,
+    "image": "https://www.dennisfrehse.com/wp/wp-content/uploads/2021/11/online-drum-lessons-dennis-frehse-japan-scaled.jpeg"
+  },
+  {
+    "musicInstructorName": "Mia Thompson",
+    "musicInstructorAbout": "Classical Violinist",
+    "Email": "instructor10@example.com",
+    "ratings": 4.4,
+    "image": "https://melodypayne.com/wp-content/uploads/2020/06/IMG_1523-1-1100x1002.jpeg"
+  },
+  {
+    "musicInstructorName": "Aiden Rodriguez",
+    "musicInstructorAbout": "Music Theory Specialist",
+    "Email": "instructor11@example.com",
+    "ratings": 4.8,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJztyklfvYb_rCqGb1B2d6c-Yvg7YURIMEBQ&usqp=CAU"
+  },
+  {
+    "musicInstructorName": "Charlotte Lee",
+    "musicInstructorAbout": "Flute Performance Instructor",
+    "Email": "instructor12@example.com",
+    "ratings": 4.2,
+    "image": "https://cso.org/media/ezwdc3rv/itzhak-perlman-pink-vest.jpg?mode=max&quality=80&width=1024&upscale=false"
+  }
+]
