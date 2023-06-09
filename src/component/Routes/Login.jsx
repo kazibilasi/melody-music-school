@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { ImGoogle,  } from "react-icons/im";
 import { AuthContext } from "../AuthProvider";
@@ -8,6 +8,9 @@ import login from "../../assets/photos/login.png"
 const Login = () => {
 
     const { user, signIn,signInWithGoogle} = useContext(AuthContext);
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from.pathname || "/";
     const [error, setError] = useState(' ')
 
     const handleLogin = event => {
@@ -15,7 +18,7 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
+        
 
         if(password.length<6){
             setError('password musth be 6 characters or longer')
@@ -29,10 +32,9 @@ const Login = () => {
         signIn(email, password)
         .then(result => {
             const loggedUser = result.user;
-            console.log(loggedUser)
             form.reset();
             logOut,
-            window.location.href= ('/')
+            navigate(from, {replace:true});
         })
         .catch(error => {
             console.log(error)
@@ -44,7 +46,7 @@ const Login = () => {
         signInWithGoogle()
             .then(result => {
                 const loggedUser = result.user;
-                console.log(loggedUser)
+                navigate(from, {replace:true});
             })
             .catch(error => {
                 console.log(error)

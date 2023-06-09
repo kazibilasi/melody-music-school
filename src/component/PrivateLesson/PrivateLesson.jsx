@@ -2,7 +2,7 @@ import React from 'react';
 
 const PrivateLesson = () => {
     return (
-        <div className= ' bg-teal-400'>
+        <div className= ' bg-teal-400  lg:mt-0'>
             <div className='lg:flex gap-16 justify-center items-center p-10'>
                 <div>
                     <p className='text-white text-4xl'>Private Lesson</p>

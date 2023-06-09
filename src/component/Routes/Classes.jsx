@@ -17,9 +17,9 @@ const Classes = () => {
         <div className='container mx-auto '>
             <div className='mt-20 grid lg:grid-cols-3 gap-7 items-center lg:ml-[7%] '>
                 {
-                    classes.map(c => <Lesson
-                        key={c._id}
-                        c={c}
+                    classes.map(item => <Lesson
+                        key={item._id}
+                        item={item}
                     ></Lesson>)
                 }
             </div>

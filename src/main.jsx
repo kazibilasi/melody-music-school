@@ -15,6 +15,15 @@ import Register from './component/Register/Registser';
 import Instructors from './component/Routes/Instructors';
 import Dashboard from './component/Dashboard/Dashboard';
 import PrivateRoute from './component/PrivateRoute/PrivateRoute';
+import SelectedClasses from './component/Dashboard/SelectedClasses';
+import EnrolledClasses from './component/Dashboard/EnrolledClasses';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+import UserHome from './component/Dashboard/UserHome';
+
+const queryClient = new QueryClient()
 
 
 const router = createBrowserRouter([
@@ -33,32 +42,48 @@ const router = createBrowserRouter([
         element: <Classes></Classes>
       },
       {
-        path:"/login",
-        element:<Login></Login> 
+        path: "/login",
+        element: <Login></Login>
       },
       {
-        path:"/register",
-        element:<Register></Register> 
+        path: "/register",
+        element: <Register></Register>
       },
       {
-        path:"/instructors",
-        element:<Instructors></Instructors>
+        path: "/instructors",
+        element: <Instructors></Instructors>
       }
     ]
   },
 
   {
-    
-      path:"/dashboard",
-      element:<Dashboard></Dashboard>,
-      
+
+    path: "/dashboard",
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    children: [
+      {
+        path: "/dashboard/selectedClasses",
+        element: <SelectedClasses></SelectedClasses>
+      },
+      {
+        path: "/dashboard/enrolledClasses",
+        element: <EnrolledClasses></EnrolledClasses>
+      },
+      {
+        path: "/dashboard/userHome",
+        element: <UserHome></UserHome>
+      }
+    ]
+
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>,
 )

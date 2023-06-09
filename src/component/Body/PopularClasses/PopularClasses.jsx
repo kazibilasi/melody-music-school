@@ -15,7 +15,7 @@ const PopularClasses = () => {
     const topClasses = classes.filter(items => items.ratings === 4)
     return (
         <div className='container mx-auto mt-24 lg:mt-32 lg:mr-32'>
-            <p className='text-center text-3xl text-teal-400'>Top Classes</p>
+            <p className='text-center text-3xl uppercase font-serif'>---- Top Classes ----</p>
             <div className=' grid lg:grid-cols-3 gap-2 gap-y-10 mt-10'>
 
                 {

@@ -15,7 +15,7 @@ const TopInstructors = () => {
     const TopInstructors = instructors.filter(items=> items.ratings>= 4.5)
     return (
         <div className='container mx-auto mt-20'>
-            <p className=' uppercase text-3xl text-center'>----- Top instructors -----</p>
+            <p className=' uppercase text-3xl text-center font-serif'>----- Top instructors -----</p>
             <div className=' grid lg:grid-cols-3 gap-2 gap-y-10 mt-10'>
 
                 {
