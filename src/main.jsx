@@ -22,6 +22,12 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import UserHome from './component/Dashboard/UserHome';
+import AdminHome from './component/Dashboard/Admin/AdminHome';
+import InstructorHome from './component/Dashboard/Instructor/InstructorHome';
+import MyClasses from './component/Dashboard/Instructor/MyClasses';
+import AddAClass from './component/Dashboard/Instructor/AddAClass';
+import ManageUsers from './component/Dashboard/Admin/ManageUsers';
+import ManageClasses from './component/Dashboard/Admin/ManageClasses';
 
 const queryClient = new QueryClient()
 
@@ -72,6 +78,34 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/userHome",
         element: <UserHome></UserHome>
+      },
+      {
+        path: "/dashboard/adminHome",
+        element: <AdminHome></AdminHome>
+      },
+      {
+        path: "/dashboard/instructorHome",
+        element: <InstructorHome></InstructorHome>
+      }
+      ,
+      {
+        path: "/dashboard/myClasses",
+        element: <MyClasses></MyClasses>
+      }
+      ,
+      {
+        path: "/dashboard/addAClasses",
+        element: <AddAClass></AddAClass>
+      }
+      ,
+      {
+        path: "/dashboard/manageUsers",
+        element: <ManageUsers></ManageUsers>
+      }
+      ,
+      {
+        path: "/dashboard/manageClasses",
+        element: <ManageClasses></ManageClasses>
       }
     ]
 

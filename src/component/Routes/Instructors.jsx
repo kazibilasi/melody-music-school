@@ -5,7 +5,7 @@ import Instructor from './Instructor';
 const Instructors = () => {
     const [instructors, setInstructors] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/Instructors')
+        fetch(' https://music-school-server-nu.vercel.app/Instructors')
             .then(res => res.json())
             .then(data => {
               

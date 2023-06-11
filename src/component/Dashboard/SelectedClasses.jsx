@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 const SelectedClasses = () => {
     const [cart, refetch] = useCommon()
-    const handleDelete = id => {
+    const handleDelete = item => {
 
         Swal.fire({
             title: 'Are you want to delete?',
@@ -17,7 +17,7 @@ const SelectedClasses = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/carts/${id}`, {
+                fetch(`http://localhost:5000/carts/${item._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -81,7 +81,7 @@ const SelectedClasses = () => {
                                     <button className="btn btn-ghost btn-xs">${item.price}</button>
                                 </td>
                                 <td>
-                                    <button onClick={() => handleDelete(item._id)} className="btn btn-ghost  btn-lg "><AiFillDelete className=' text-3xl'></AiFillDelete></button>
+                                    <button onClick={() => handleDelete(item)} className="btn btn-ghost  btn-lg "><AiFillDelete className=' text-3xl'></AiFillDelete></button>
                                 </td>
 
                             </tr>

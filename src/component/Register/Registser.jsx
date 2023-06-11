@@ -1,14 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import React, { useContext } from 'react';
 
-import { ImGoogle} from "react-icons/im";
+import { ImGoogle } from "react-icons/im";
 import { AuthContext } from "../AuthProvider";
 import register from "../../assets/photos/register.png"
+import Swal from "sweetalert2";
 
 
 const Register = () => {
+    const navigate = useNavigate()
+    const location = useLocation()
+    
+    const from = location.state?.form?.pathname || "/"
 
-    const { user, createUser,logOut,  signInWithGoogle } = useContext(AuthContext);
+    const { user, createUser, logOut, signInWithGoogle, updateUserProfile } = useContext(AuthContext);
 
     const handleRegister = event => {
         event.preventDefault();
@@ -17,15 +22,41 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         const photoURL = form.text.value;
-        console.log(email, password,name,photoURL)
+        console.log(email, password, name, photoURL)
 
         createUser(email, password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
                 form.reset();
-                logOut,
-               window.location.href= ('/')
+                const saveUser = { name: name, email: email }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'User sign up successfully',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                            navigate(from, {replace:true});
+                        }
+                    })
+                // updateUserProfile(name,photoURL)
+                // .then(()=>{
+
+                // })
+                // .catch(error=>console.log(error))
+
+
             })
             .catch(error => {
                 console.log(error)
@@ -37,6 +68,27 @@ const Register = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
+                const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'User sign up successfully',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                            navigate('/')
+                        }
+                    })
             })
             .catch(error => {
                 console.log(error)
@@ -64,7 +116,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" name="email" placeholder="email" className="input input-bordered" required/>
+                                <input type="email" name="email" placeholder="email" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
