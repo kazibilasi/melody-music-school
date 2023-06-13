@@ -11,17 +11,17 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [loading, setLoading]= useState(true)
+    const [loading, setLoading] = useState(true)
     const provider = new GoogleAuthProvider();
 
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
 
     }
-    const updateUserProfile = (name,photo)=>{
+    const updateUserProfile = (name, photo) => {
         updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
-          });
+        });
     }
 
 
@@ -36,20 +36,20 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log('auth state change', currentUser);
             setUser(currentUser)
-            if(currentUser){
-                axios.post('https://music-school-server-nu.vercel.app/jwt',{email:currentUser.email})
-                .then(data=>{
-                    localStorage.setItem('access-token', data.data.token)
-                    setLoading(false)
-                })
+            if (currentUser) {
+                console.log(currentUser.email)
+                axios.post('http://localhost:5000/jwt', { email: currentUser.email })
+                    .then(data => {
+                        localStorage.setItem('access-token', data.data.token)
+                        setLoading(false)
+                    })
             }
 
-                else{
-                    localStorage.removeItem('access-token')
-                }
-        })
+            else {
+                localStorage.removeItem('access-token')
+            }
+        }) 
         return () => {
             unsubscribe();
         }

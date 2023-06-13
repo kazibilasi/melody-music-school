@@ -22,7 +22,7 @@ const Lesson = ({ item }) => {
         
         if (user && user.email) {
             const selectItems = {selectItemsId: _id , name,seats, instructor, image, price, email: user.email}
-            fetch('http://localhost:5000/carts',{
+            fetch('https://music-school-server-nu.vercel.app/carts',{
                 method : 'POST',
                 headers:{
                     'content-type': 'application/json'
@@ -63,7 +63,7 @@ const Lesson = ({ item }) => {
    
     return (
         <div>
-            <div className="card w-96 glass">
+            <div  className="card w-96 glass">
                 <figure><img className=' image-full h-full w-full' src={item.image} alt="car!" /></figure>
                 <div className="card-body text-xl">
                     <h2 className="card-title">{item.name}</h2>

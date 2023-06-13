@@ -1,23 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import useCommon from '../Common/useCommon';
 import { AiFillHome, AiOutlineSelect, AiOutlineUser } from "react-icons/ai";
 import { GiClassicalKnowledge } from "react-icons/gi";
-import Admin from '../Common/Admin';
-import Instructor from '../Common/Instructor';
-
-
-
-
-
-
-
+import useAdminHook from '../Common/useAdminHook';
+import useInstructorHook from '../Common/useInstructorHook';
 const Dashboard = () => {
     const [cart] = useCommon()
-    const [isAdmin] = Admin;
-    const [isInstructor]=Instructor;
-    
-  
+    const [isAdmin] = useAdminHook();
+    console.log(isAdmin?.admin)
+    const [isInstructor] = useInstructorHook();
+    console.log(isInstructor)
+    const [isUser, setIsUser] = useState(true)
+    useEffect(() => {
+        if (isAdmin?.admin || isInstructor?.instructor) {
+            setIsUser(false)
+        }
+    }, [isAdmin?.admin, isInstructor?.instructor])
+
+
     return (
         <div className='container mx-auto'>
 
@@ -29,37 +30,51 @@ const Dashboard = () => {
 
 
                     <label htmlFor="my-drawer-2" className="btn btn-sm bg-teal-400 text-center rounded-3xl drawer-button lg:hidden">All Menu</label>
-
                     <Outlet></Outlet>
+
 
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
                     <ul className="menu p-4 w-80 h-full bg-teal-400 text-base-content">
-                        <a className=" w-32 text-center text-xl font-serif mb-8 ml-9">MELODY <br />music school</a>
+                    
 
                         {/* Sidebar content here */}
-                        {
-                            isAdmin ? <>
-                                <li><NavLink to="/dashboard/adminHome"><AiOutlineUser></AiOutlineUser>Admin Home</NavLink></li>
-                                <li><NavLink to="/dashboard/manageUsers"><AiOutlineSelect></AiOutlineSelect>Manage User's</NavLink></li>
-                                <li><NavLink to="/dashboard/manageClasses"><GiClassicalKnowledge></GiClassicalKnowledge>Manage Classes</NavLink></li>
-                            </> : isInstructor ? <>
-                                <li><NavLink to="/dashboard/instructorHome"><AiOutlineUser></AiOutlineUser>Instructor Home</NavLink></li>
-                                <li><NavLink to="/dashboard/myClasses"><AiOutlineSelect></AiOutlineSelect>My Classes <span className="badge badge-secondary">+0</span></NavLink></li>
-                                <li><NavLink to="/dashboard/addAClasses"><GiClassicalKnowledge></GiClassicalKnowledge>Add A Class</NavLink></li>
+                        <div className='grid grid-cols-1 items-center'>
+                        <p className=" w-32 text-center text-xl font-serif mb-8 ml-9">MELODY <br />music school</p>
 
-                            </> : <>
-                                <li><NavLink to="/dashboard/userHome"><AiOutlineUser></AiOutlineUser>User Home</NavLink></li>
-                                <li><NavLink to="/dashboard/selectedClasses"><AiOutlineSelect></AiOutlineSelect>Selected Classes <span className="badge badge-secondary">+{cart?.length || 0}</span></NavLink></li>
-                                <li><NavLink to="/dashboard/enrolledClasses"><GiClassicalKnowledge></GiClassicalKnowledge>Enrolled Classes</NavLink></li>
-                            </>
-                        }
-                        <div className="flex flex-col w-full border-opacity-50">
+                            <div>
+                                {
+                                    isAdmin?.admin && <>
+                                        <li><NavLink to="/dashboard/adminHome"><AiOutlineUser></AiOutlineUser>Admin Home</NavLink></li>
+                                        <li><NavLink to="/dashboard/manageUsers"><AiOutlineSelect></AiOutlineSelect>Manage User's</NavLink></li>
+                                        <li><NavLink to="/dashboard/manageClasses"><GiClassicalKnowledge></GiClassicalKnowledge>Manage Classes</NavLink></li>
+                                    </>
+                                }
+                                {
+                                    isInstructor?.instructor && <>
+                                        <li><NavLink to="/dashboard/instructorHome"><AiOutlineUser></AiOutlineUser>Instructor Home</NavLink></li>
+                                        <li><NavLink to="/dashboard/myClasses"><AiOutlineSelect></AiOutlineSelect>My Classes </NavLink></li>
+                                        <li><NavLink to="/dashboard/addAClasses"><GiClassicalKnowledge></GiClassicalKnowledge>Add A Class</NavLink></li>
 
+                                    </>
+                                }
+                                {
+                                    isUser && <>
+                                        <li><NavLink to="/dashboard/userHome"><AiOutlineUser></AiOutlineUser>User Home</NavLink></li>
+                                        <li><NavLink to="/dashboard/selectedClasses"><AiOutlineSelect></AiOutlineSelect>Selected Classes <span className="badge badge-secondary">+{cart?.length || 0}</span></NavLink></li>
+                                        <li><NavLink to="/dashboard/enrolledClasses"><GiClassicalKnowledge></GiClassicalKnowledge>Enrolled Classes</NavLink></li>
+                                    </>
+                                }
+                            </div>
                             <div className="divider"></div>
-                            <li><NavLink to="/"><AiFillHome></AiFillHome>Home</NavLink></li>
+
+                            <div className=" w-full border-opacity-50">
+
+
+                                <li><NavLink to="/"><AiFillHome></AiFillHome>Home</NavLink></li>
+                            </div>
                         </div>
                     </ul>
 

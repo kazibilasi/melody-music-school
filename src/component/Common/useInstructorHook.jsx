@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
-// import useAxiosSecure from './useAxiosSecure';
-import { useQuery } from '@tanstack/react-query';
 import { AuthContext } from '../AuthProvider';
+import { useQuery } from '@tanstack/react-query';
 
-const Instructor = () => {
+const useInstructorHook = () => {
     const token = localStorage.getItem('access-token');
     const { user } = useContext(AuthContext)
     // const [axiosSecure] = useAxiosSecure();
@@ -23,4 +22,4 @@ const Instructor = () => {
     return [isInstructor];
 };
 
-export default Instructor;
+export default useInstructorHook;

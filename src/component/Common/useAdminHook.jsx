@@ -1,18 +1,16 @@
-import React, { useContext } from 'react';
-// import useAxiosSecure from './useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import React, { useContext } from 'react';
 import { AuthContext } from '../AuthProvider';
 
-const Instructor = () => {
+const useAdminHook = () => {
     const token = localStorage.getItem('access-token');
     const { user } = useContext(AuthContext)
-    // const [axiosSecure] = useAxiosSecure();
-    const { data: isInstructor} = useQuery({
-        queryKey: ['instructor', user?.email],
-      
+    // const [axiosSecure]= useAxiosSecure();
+    const { data: isAdmin } = useQuery({
+        queryKey: ['admin', user?.email],
 
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/instructor/${user?.email}`, {
+            const res = await fetch(`http://localhost:5000/users/admin/${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('access-token')}`
                 }
@@ -20,7 +18,7 @@ const Instructor = () => {
             return res.json();
         }
     })
-    return [isInstructor];
+    return [isAdmin];
 };
 
-export default Instructor;
+export default useAdminHook;

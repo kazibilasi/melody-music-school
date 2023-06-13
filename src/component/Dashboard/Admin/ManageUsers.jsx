@@ -2,19 +2,42 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { AiFillDelete } from 'react-icons/ai';
 import Swal from 'sweetalert2';
-import useCommon from '../../Common/useCommon';
-import useAxiosSecure from '../../Common/useAxiosSecure';
+// import useCommon from '../../Common/useCommon';
+// import useAxiosSecure from '../../Common/useAxiosSecure';
 
 const ManageUsers = () => {
-    const[axiosSecure]=useAxiosSecure()
+    
     
 
-    const { data: users = [], refetch } = useQuery(["users"], async () => {
-        const res = await axiosSecure.get('/users');
-        return res.data;
+    // const { data: users = [], refetch } = useQuery(["/users"], async () => {
+    //     const res = await fetch('http://localhost:5000/users',{
+    //         headers: {
+    //             authorization: `bearer ${localStorage.getItem('access-token')}`
+    //         }
+    //     })
+    //     return res.json();
 
 
+    // })
+
+    const { data: users =[] } = useQuery({
+        queryKey: ['/users'],
+
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/users', {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('access-token')}`
+                }
+            })
+            return res.json();
+        }
     })
+
+
+
+
+    
+    console.log(users)
 const handleDelete = user =>{
 
 }
