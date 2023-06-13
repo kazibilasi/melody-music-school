@@ -42,7 +42,7 @@ const Navbar = () => {
                     user?.email ? <>
 
 
-                        <button onClick={handleLogOut} className='btn btn-sm rounded-3xl bg-teal-400 border-none'>Sign Out</button>  <img className="h-[50px] w-[50px] ml-3 rounded-full" src={user.photoURL} alt="" />
+                        <button onClick={handleLogOut} className='btn btn-sm rounded-3xl bg-teal-400 border-none'>Sign Out</button>  <img className="h-[50px] w-[50px] ml-3 rounded-full" onMouseMove={user.displayName} src={user.photoURL} alt="" />
 
 
                     </> : <Link to="/login" className="btn btn-sm rounded-3xl bg-teal-400 border-none text-xl">Log In</Link >

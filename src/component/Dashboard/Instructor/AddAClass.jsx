@@ -20,7 +20,7 @@ const AddAClass = () => {
       
         console.log(classImage, className, instructorEmail, instructorName, availableSeats, price);
 
-        const addItems = { className: className, classImage: classImage, instructorEmail:instructorEmail,instructorName:instructorName, availableSeats: availableSeats,price:price}
+        const addItems = { status:'pending',name: className, image: classImage, instructorEmail:instructorEmail,instructor:instructorName, seats: availableSeats,price:price}
         fetch('http://localhost:5000/addClasses',{
             method : 'POST',
             headers:{

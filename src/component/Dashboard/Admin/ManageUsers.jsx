@@ -6,8 +6,8 @@ import Swal from 'sweetalert2';
 // import useAxiosSecure from '../../Common/useAxiosSecure';
 
 const ManageUsers = () => {
-    
-    
+
+
 
     // const { data: users = [], refetch } = useQuery(["/users"], async () => {
     //     const res = await fetch('http://localhost:5000/users',{
@@ -20,7 +20,7 @@ const ManageUsers = () => {
 
     // })
 
-    const { data: users =[] } = useQuery({
+    const { data: users = [] } = useQuery({
         queryKey: ['/users'],
 
         queryFn: async () => {
@@ -36,50 +36,79 @@ const ManageUsers = () => {
 
 
 
-    
+
     console.log(users)
-const handleDelete = user =>{
+    const handleDelete = user => {
+        Swal.fire({
+            title: 'Are you want to delete?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/users/${user._id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
 
-}
-const handleMakeAdmin = user =>{
-    fetch(`http://localhost:5000/users/admin/${user._id}`,{
-        method:"PATCH"
-    })
-    .then(res=> res.json())
-    .then(data =>{
-        if(data.modifiedCount){
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: `${user.name} is an admin`,
-                showConfirmButton: false,
-                timer: 1500
-              })
-              refetch()
-        }
-    })
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            refetch()
 
-}
 
-const handleMakeInstructor = user =>{
-    fetch(`http://localhost:5000/users/instructor/${user._id}`,{
-        method:"PATCH"
-    })
-    .then(res=> res.json())
-    .then(data =>{
-        if(data.modifiedCount){
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: `${user.name} is an instructor`,
-                showConfirmButton: false,
-                timer: 1500
-              })
-              refetch()
-        }
-    })
+                        }
 
-}
+                    })
+            }
+        })
+
+    }
+    const handleMakeAdmin = user => {
+        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+            method: "PATCH"
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} is an admin`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    refetch()
+                }
+            })
+
+    }
+
+    const handleMakeInstructor = user => {
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+            method: "PATCH"
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} is an instructor`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    refetch()
+                }
+            })
+
+    }
     return (
         <div className='container mx-auto'>
             <p className=' uppercase text-center text-3xl bg-teal-400'>all users:{users.length}</p>
@@ -98,23 +127,27 @@ const handleMakeInstructor = user =>{
                     </thead>
                     <tbody>
                         {
-                            users.map((user, index)=> <tr key={user._id}>
-                            <th>{index+1}</th>
-                            <td>{user.name}</td>
-                            <td>{user.email}</td>
-                            <td>{
-                                
-                                user.role === 'admin'  ? 'admin' : 'instructor'? 'instructor': <p><span onClick={()=> handleMakeAdmin(user)} className='btn btn-sm rounded-3xl'>Make Admin</span> <br /><span onClick={()=>handleMakeInstructor(user)} className='btn btn-sm rounded-3xl'>Make Instructor</span></p>
+                            users?.map((user, index) => <tr key={user._id}>
+                                <th>{index + 1}</th>
+                                <td>{user.name}</td>
+                                <td>{user.email}</td>
+                                <td>{
 
-                                
-                                
+                                    user.role === 'admin' ? 'admin' : user.role=== 'instructor' ? 'instructor' : 'student'
+
+
+
+
                                 }</td>
-                            <td onClick={() => handleDelete(user)}className='btn btn-lg'><AiFillDelete></AiFillDelete></td>
-                        </tr>)
+                                <td > 
+                                <p> <span  onClick={() => handleDelete(user)} className='btn btn-sm'> <AiFillDelete></AiFillDelete></span> <br /><span onClick={() => handleMakeAdmin(user)} className='btn btn-sm rounded-3xl'>Make Admin</span> <br /><span onClick={() => handleMakeInstructor(user)} className='btn btn-sm rounded-3xl'>Make Instructor</span></p>
+                                
+                               </td>
+                            </tr>)
                         }
-                       
-                       
-                     
+
+
+
                     </tbody>
                 </table>
             </div>

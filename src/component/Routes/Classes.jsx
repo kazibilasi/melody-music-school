@@ -9,7 +9,8 @@ const Classes = () => {
             .then(res => res.json())
             .then(data => {
 
-                setClasses(data)
+                const approvedClass = data.filter(d=>d.status!=='pending'&& d.status!=='deny')
+                setClasses(approvedClass)
             })
 
     }, [])

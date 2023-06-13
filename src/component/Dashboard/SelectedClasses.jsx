@@ -53,6 +53,7 @@ const SelectedClasses = () => {
                             <th>Class Name</th>
                             <th>Seats</th>
                             <th>Price</th>
+                            <th>join</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -80,7 +81,9 @@ const SelectedClasses = () => {
                                 <td>{item.seats}</td>
                                 <td>
                                     <button className="btn btn-ghost btn-xs">${item.price}</button>
+
                                 </td>
+                                <button className='btn btn-sm mt-5 rounded-3xl'>Enroll now</button>
                                 <td>
                                     <button onClick={() => handleDelete(item)} className="btn btn-ghost  btn-lg "><AiFillDelete className=' text-3xl'></AiFillDelete></button>
                                 </td>

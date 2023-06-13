@@ -28,6 +28,7 @@ import MyClasses from './component/Dashboard/Instructor/MyClasses';
 import AddAClass from './component/Dashboard/Instructor/AddAClass';
 import ManageUsers from './component/Dashboard/Admin/ManageUsers';
 import ManageClasses from './component/Dashboard/Admin/ManageClasses';
+import PaymentHistory from './component/Dashboard/Admin/PaymentHistory';
 
 const queryClient = new QueryClient()
 
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "/instructors",
         element: <Instructors></Instructors>
+      },
+      {
+        path:"/payment",
+        element:<PaymentHistory></PaymentHistory>
       }
     ]
   },

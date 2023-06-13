@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import useCommon from '../Common/useCommon';
 import { AiFillHome, AiOutlineSelect, AiOutlineUser } from "react-icons/ai";
-import { GiClassicalKnowledge } from "react-icons/gi";
+import { GiClassicalKnowledge, GiPayMoney } from "react-icons/gi";
 import useAdminHook from '../Common/useAdminHook';
 import useInstructorHook from '../Common/useInstructorHook';
 const Dashboard = () => {
@@ -16,7 +16,7 @@ const Dashboard = () => {
         if (isAdmin?.admin || isInstructor?.instructor) {
             setIsUser(false)
         }
-    }, [isAdmin?.admin, isInstructor?.instructor])
+    }, [isAdmin?.admin, isInstructor?.isInstructor])
 
 
     return (
@@ -44,7 +44,7 @@ const Dashboard = () => {
                         <div className='grid grid-cols-1 items-center'>
                         <p className=" w-32 text-center text-xl font-serif mb-8 ml-9">MELODY <br />music school</p>
 
-                            <div>
+                            {/* <div>
                                 {
                                     isAdmin?.admin && <>
                                         <li><NavLink to="/dashboard/adminHome"><AiOutlineUser></AiOutlineUser>Admin Home</NavLink></li>
@@ -54,7 +54,7 @@ const Dashboard = () => {
                                 }
                                 {
                                     isInstructor?.instructor && <>
-                                        <li><NavLink to="/dashboard/instructorHome"><AiOutlineUser></AiOutlineUser>Instructor Home</NavLink></li>
+                                        <li><AiOutlineUser></AiOutlineUser>Instructor</li>
                                         <li><NavLink to="/dashboard/myClasses"><AiOutlineSelect></AiOutlineSelect>My Classes </NavLink></li>
                                         <li><NavLink to="/dashboard/addAClasses"><GiClassicalKnowledge></GiClassicalKnowledge>Add A Class</NavLink></li>
 
@@ -65,6 +65,26 @@ const Dashboard = () => {
                                         <li><NavLink to="/dashboard/userHome"><AiOutlineUser></AiOutlineUser>User Home</NavLink></li>
                                         <li><NavLink to="/dashboard/selectedClasses"><AiOutlineSelect></AiOutlineSelect>Selected Classes <span className="badge badge-secondary">+{cart?.length || 0}</span></NavLink></li>
                                         <li><NavLink to="/dashboard/enrolledClasses"><GiClassicalKnowledge></GiClassicalKnowledge>Enrolled Classes</NavLink></li>
+                                        <li><NavLink to="/dashboard/payment"><GiPayMoney></GiPayMoney>Payment History</NavLink></li>
+                                    </>
+                                }
+                            </div> */}
+                            <div>
+                                {
+                                    isAdmin?.admin ? <>
+                                    <li><NavLink to="/dashboard/adminHome"><AiOutlineUser></AiOutlineUser>Admin Home</NavLink></li>
+                                    <li><NavLink to="/dashboard/manageUsers"><AiOutlineSelect></AiOutlineSelect>Manage User's</NavLink></li>
+                                    <li><NavLink to="/dashboard/manageClasses"><GiClassicalKnowledge></GiClassicalKnowledge>Manage Classes</NavLink></li>
+                                </>: isInstructor?.instructor ?  <>
+                                        <li><AiOutlineUser></AiOutlineUser>Instructor</li>
+                                        <li><NavLink to="/dashboard/myClasses"><AiOutlineSelect></AiOutlineSelect>My Classes </NavLink></li>
+                                        <li><NavLink to="/dashboard/addAClasses"><GiClassicalKnowledge></GiClassicalKnowledge>Add A Class</NavLink></li>
+
+                                    </>: <>
+                                        <li><NavLink to="/dashboard/userHome"><AiOutlineUser></AiOutlineUser>User Home</NavLink></li>
+                                        <li><NavLink to="/dashboard/selectedClasses"><AiOutlineSelect></AiOutlineSelect>Selected Classes <span className="badge badge-secondary">+{cart?.length || 0}</span></NavLink></li>
+                                        <li><NavLink to="/dashboard/enrolledClasses"><GiClassicalKnowledge></GiClassicalKnowledge>Enrolled Classes</NavLink></li>
+                                        <li><NavLink to="/dashboard/payment"><GiPayMoney></GiPayMoney>Payment History</NavLink></li>
                                     </>
                                 }
                             </div>
