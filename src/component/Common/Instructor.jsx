@@ -12,7 +12,7 @@ const Instructor = () => {
       
 
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/instructor/${user?.email}`, {
+            const res = await fetch(`https://music-school-server-nu.vercel.app/users/instructor/${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('access-token')}`
                 }

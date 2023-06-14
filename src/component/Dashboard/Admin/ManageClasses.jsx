@@ -8,7 +8,7 @@ const ManageClasses = () => {
 
     const [classes, setClasses] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch('https://music-school-server-nu.vercel.app/classes')
             .then(res => res.json())
             .then(data => {
 
@@ -20,7 +20,7 @@ const ManageClasses = () => {
 
     const handleAccept = (id)=>{
         const updateDoc = {status:'accepted'}
-            fetch(`http://localhost:5000/addClasses/${id}`,{
+            fetch(`https://music-school-server-nu.vercel.app/addClasses/${id}`,{
                 method:'PATCH',
                 headers: {
                     'content-type': "application/json"
@@ -49,7 +49,7 @@ const ManageClasses = () => {
 
     const handleDeny = (id)=>{
         const updateDoc = {status:'deny'}
-            fetch(`http://localhost:5000/addClasses/${id}`,{
+            fetch(`https://music-school-server-nu.vercel.app/addClasses/${id}`,{
                 method:'PATCH',
                 headers: {
                     'content-type': "application/json"

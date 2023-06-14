@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 
 const useCommon = () => {
 
-    const token = localStorage.getItem('access-token');
+    
     // const [axiosSecure]= useAxiosSecure()
 
     const {user,loading}= useContext(AuthContext)
@@ -14,7 +14,7 @@ const useCommon = () => {
         queryKey: ['carts', user?.email],
         enabled:!loading && !!user?.email,
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/carts?email=${user?.email}`,{
+            const res = await fetch(`https://music-school-server-nu.vercel.app/carts?email=${user?.email}`,{
                 headers:{
                     authorization : `bearer ${localStorage.getItem('access-token')}`
                 }

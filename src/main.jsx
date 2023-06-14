@@ -21,14 +21,12 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
-import UserHome from './component/Dashboard/UserHome';
-import AdminHome from './component/Dashboard/Admin/AdminHome';
-import InstructorHome from './component/Dashboard/Instructor/InstructorHome';
 import MyClasses from './component/Dashboard/Instructor/MyClasses';
 import AddAClass from './component/Dashboard/Instructor/AddAClass';
 import ManageUsers from './component/Dashboard/Admin/ManageUsers';
 import ManageClasses from './component/Dashboard/Admin/ManageClasses';
 import PaymentHistory from './component/Dashboard/Admin/PaymentHistory';
+import Payment from './component/Dashboard/Payment';
 
 const queryClient = new QueryClient()
 
@@ -60,10 +58,7 @@ const router = createBrowserRouter([
         path: "/instructors",
         element: <Instructors></Instructors>
       },
-      {
-        path:"/payment",
-        element:<PaymentHistory></PaymentHistory>
-      }
+     
     ]
   },
 
@@ -80,18 +75,7 @@ const router = createBrowserRouter([
         path: "/dashboard/enrolledClasses",
         element: <EnrolledClasses></EnrolledClasses>
       },
-      {
-        path: "/dashboard/userHome",
-        element: <UserHome></UserHome>
-      },
-      {
-        path: "/dashboard/adminHome",
-        element: <AdminHome></AdminHome>
-      },
-      {
-        path: "/dashboard/instructorHome",
-        element: <InstructorHome></InstructorHome>
-      }
+     
       ,
       {
         path: "/dashboard/myClasses",
@@ -111,6 +95,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/manageClasses",
         element: <ManageClasses></ManageClasses>
+      },
+      {
+        path:"/dashboard/paymentHistory",
+        element:<PaymentHistory></PaymentHistory>
+      },
+      {
+        path:'/dashboard/payment',
+        element:<Payment></Payment>
       }
     ]
 

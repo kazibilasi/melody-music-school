@@ -38,11 +38,11 @@ const Dashboard = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
                     <ul className="menu p-4 w-80 h-full bg-teal-400 text-base-content">
-                    
+
 
                         {/* Sidebar content here */}
                         <div className='grid grid-cols-1 items-center'>
-                        <p className=" w-32 text-center text-xl font-serif mb-8 ml-9">MELODY <br />music school</p>
+                            <p className=" w-32 text-center text-xl font-serif mb-8 ml-9">MELODY <br />music school</p>
 
                             {/* <div>
                                 {
@@ -72,19 +72,19 @@ const Dashboard = () => {
                             <div>
                                 {
                                     isAdmin?.admin ? <>
-                                    <li><NavLink to="/dashboard/adminHome"><AiOutlineUser></AiOutlineUser>Admin Home</NavLink></li>
-                                    <li><NavLink to="/dashboard/manageUsers"><AiOutlineSelect></AiOutlineSelect>Manage User's</NavLink></li>
-                                    <li><NavLink to="/dashboard/manageClasses"><GiClassicalKnowledge></GiClassicalKnowledge>Manage Classes</NavLink></li>
-                                </>: isInstructor?.instructor ?  <>
-                                        <li><AiOutlineUser></AiOutlineUser>Instructor</li>
+                                         <li><NavLink ><AiOutlineUser></AiOutlineUser>Admin Home </NavLink></li>
+                                        <li><NavLink to="/dashboard/manageUsers"><AiOutlineSelect></AiOutlineSelect>Manage User's</NavLink></li>
+                                        <li><NavLink to="/dashboard/manageClasses"><GiClassicalKnowledge></GiClassicalKnowledge>Manage Classes</NavLink></li>
+                                    </> : isInstructor?.instructor ? <>
+                                        <li><NavLink ><AiOutlineUser></AiOutlineUser>Instructor </NavLink></li>
                                         <li><NavLink to="/dashboard/myClasses"><AiOutlineSelect></AiOutlineSelect>My Classes </NavLink></li>
                                         <li><NavLink to="/dashboard/addAClasses"><GiClassicalKnowledge></GiClassicalKnowledge>Add A Class</NavLink></li>
 
-                                    </>: <>
-                                        <li><NavLink to="/dashboard/userHome"><AiOutlineUser></AiOutlineUser>User Home</NavLink></li>
+                                    </> : <>
+                                        <li><NavLink ><AiOutlineUser></AiOutlineUser>User </NavLink></li>
                                         <li><NavLink to="/dashboard/selectedClasses"><AiOutlineSelect></AiOutlineSelect>Selected Classes <span className="badge badge-secondary">+{cart?.length || 0}</span></NavLink></li>
                                         <li><NavLink to="/dashboard/enrolledClasses"><GiClassicalKnowledge></GiClassicalKnowledge>Enrolled Classes</NavLink></li>
-                                        <li><NavLink to="/dashboard/payment"><GiPayMoney></GiPayMoney>Payment History</NavLink></li>
+                                        <li><NavLink to="/dashboard/paymentHistory"><GiPayMoney></GiPayMoney>Payment History</NavLink></li>
                                     </>
                                 }
                             </div>

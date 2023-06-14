@@ -3,6 +3,7 @@ import React from 'react';
 import useCommon from '../Common/useCommon';
 import { AiFillDelete } from 'react-icons/ai';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const SelectedClasses = () => {
     const [cart, refetch] = useCommon()
@@ -24,14 +25,14 @@ const SelectedClasses = () => {
                     .then(res => res.json())
                     .then(data => {
                         if (data.deletedCount > 0) {
-                           
+
                             Swal.fire(
                                 'Deleted!',
                                 'Your file has been deleted.',
                                 'success'
                             )
                             refetch()
-                           
+
 
                         }
 
@@ -83,7 +84,8 @@ const SelectedClasses = () => {
                                     <button className="btn btn-ghost btn-xs">${item.price}</button>
 
                                 </td>
-                                <button className='btn btn-sm mt-5 rounded-3xl'>Enroll now</button>
+                                <Link to="/dashboard/payment"><button className='btn btn-sm mt-5 rounded-3xl'>Enroll now</button></Link>
+
                                 <td>
                                     <button onClick={() => handleDelete(item)} className="btn btn-ghost  btn-lg "><AiFillDelete className=' text-3xl'></AiFillDelete></button>
                                 </td>

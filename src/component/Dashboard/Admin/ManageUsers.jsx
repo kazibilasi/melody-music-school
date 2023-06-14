@@ -10,7 +10,7 @@ const ManageUsers = () => {
 
 
     // const { data: users = [], refetch } = useQuery(["/users"], async () => {
-    //     const res = await fetch('http://localhost:5000/users',{
+    //     const res = await fetch('https://music-school-server-nu.vercel.app/users',{
     //         headers: {
     //             authorization: `bearer ${localStorage.getItem('access-token')}`
     //         }
@@ -24,7 +24,7 @@ const ManageUsers = () => {
         queryKey: ['/users'],
 
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users', {
+            const res = await fetch('https://music-school-server-nu.vercel.app/users', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('access-token')}`
                 }
@@ -48,7 +48,7 @@ const ManageUsers = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/${user._id}`, {
+                fetch(`https://music-school-server-nu.vercel.app/users/${user._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -71,7 +71,7 @@ const ManageUsers = () => {
 
     }
     const handleMakeAdmin = user => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        fetch(`https://music-school-server-nu.vercel.app/users/admin/${user._id}`, {
             method: "PATCH"
         })
             .then(res => res.json())
@@ -91,7 +91,7 @@ const ManageUsers = () => {
     }
 
     const handleMakeInstructor = user => {
-        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+        fetch(`https://music-school-server-nu.vercel.app/users/instructor/${user._id}`, {
             method: "PATCH"
         })
             .then(res => res.json())
@@ -140,7 +140,7 @@ const ManageUsers = () => {
 
                                 }</td>
                                 <td > 
-                                <p> <span  onClick={() => handleDelete(user)} className='btn btn-sm'> <AiFillDelete></AiFillDelete></span> <br /><span onClick={() => handleMakeAdmin(user)} className='btn btn-sm rounded-3xl'>Make Admin</span> <br /><span onClick={() => handleMakeInstructor(user)} className='btn btn-sm rounded-3xl'>Make Instructor</span></p>
+                                <p> <span  onClick={() => handleDelete(user)} className='btn btn-sm'> <AiFillDelete></AiFillDelete></span> <br /><span onClick={() => handleMakeAdmin(user)}  disabled={user.role=='admin'|| user.role=='instructor' ?  true : false} className='btn btn-sm rounded-3xl'>Make Admin</span> <br /><span   disabled={user.role=='admin'|| user.role=='instructor' ?  true : false} onClick={() => handleMakeInstructor(user)} className='btn btn-sm rounded-3xl'>Make Instructor</span></p>
                                 
                                </td>
                             </tr>)
