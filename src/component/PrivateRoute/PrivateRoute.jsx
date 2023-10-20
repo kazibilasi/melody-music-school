@@ -5,12 +5,11 @@ import useAdminHook from '../Common/useAdminHook';
 
 
 const PrivateRoute = ({children}) => {
-    const {user}= useContext(AuthContext)
-   
-  
-
+    const {user,loading}= useContext(AuthContext)
     if(user){
+        loading
         return children;
+        
     }
     return <Navigate to= "/login" state={{from:location}} replace></Navigate>
 };

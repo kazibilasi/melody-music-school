@@ -1,11 +1,12 @@
 import React from 'react';
+import { HiMusicNote } from 'react-icons/hi';
 
 const Footer = () => {
     return (
         <div>
             <footer className="footer p-10 bg-teal-400 text-white text-xl mt-24">
                 <div>
-                <a className=" w-32 text-center text-xl font-serif">MELODY <br />music school</a>
+                <a className="flex justify-center items-center text-center text-xl font-serif"><HiMusicNote className='text-3xl mr-3'></HiMusicNote>MELODY <br />music school</a>
                     <p>ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
                 </div>
                 <div>

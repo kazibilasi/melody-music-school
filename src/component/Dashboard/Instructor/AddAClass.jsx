@@ -21,7 +21,7 @@ const AddAClass = () => {
         console.log(classImage, className, instructorEmail, instructorName, availableSeats, price);
 
         const addItems = { status:'pending',name: className, image: classImage, instructorEmail:instructorEmail,instructor:instructorName, seats: availableSeats,price:price}
-        fetch('https://music-school-server-nu.vercel.app/addClasses',{
+        fetch('http://localhost:5000/addClasses',{
             method : 'POST',
             headers:{
                 'content-type': 'application/json'

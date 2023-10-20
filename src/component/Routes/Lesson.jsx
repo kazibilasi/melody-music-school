@@ -5,7 +5,6 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../AuthProvider';
 import Swal from 'sweetalert2';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Common from '../Common/useCommon';
 import useCommon from '../Common/useCommon';
 import { motion } from "framer-motion";
 
@@ -23,7 +22,7 @@ const Lesson = ({ item }) => {
 
         if (user && user.email) {
             const selectItems = { selectItemsId: _id, name, seats, instructor, image, price, email: user.email }
-            fetch('https://music-school-server-nu.vercel.app/carts', {
+            fetch('http://localhost:5000/carts', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -63,19 +62,19 @@ const Lesson = ({ item }) => {
     }
 
     return (
-        <div>
+        <div >
             <motion.div
-                className="container"
+                className="container mx-auto"
                 whileHover={{ scale: 1.1, rotate: 360 }}
 
             >
-                <div className="card w-96 glass">
-                    <figure><img className=' image-full h-full w-full' src={item.image} alt="car!" /></figure>
+                <div className="card w-96 container mx-auto ">
+                    <figure><img className=' image-full w-full h-full' src={item.image} alt="car!" /></figure>
                     <div className="card-body text-xl">
                         <h2 className="card-title">{item.name}</h2>
                         <p>Instructor: {item.instructor}</p>
                         <p>Seats: {item.seats}</p>
-                        <p>Price: {item.price}</p>
+                        <p>Price: ${item.price}</p>
                         <p >
                             <Rating
                                 style={{ maxWidth: 110 }}

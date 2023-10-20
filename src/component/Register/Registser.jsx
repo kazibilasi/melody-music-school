@@ -30,7 +30,7 @@ const Register = () => {
                 console.log(loggedUser)
                 form.reset();
                 const saveUser = { name: name, email: email }
-                fetch('https://music-school-server-nu.vercel.app/users', {
+                fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -39,16 +39,7 @@ const Register = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        if (data.insertedId) {
-                            Swal.fire({
-                                position: 'top-end',
-                                icon: 'success',
-                                title: 'User sign up successfully',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                            navigate(from, {replace:true});
-                        }
+                        navigate(from, {replace:true});
                     })
                 // updateUserProfile(name,photoURL)
                 // .then(()=>{
@@ -69,7 +60,7 @@ const Register = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
                 const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
-                fetch('https://music-school-server-nu.vercel.app/users', {
+                fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -137,7 +128,7 @@ const Register = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-sm bg-teal-400 border-none">Register</button>
+                                <button className="btn btn-sm bg-teal-400  border-none">Register</button>
                             </div>
                             <button onClick={handleGoogleRegister} className='btn btn-outline mt-3 w-full'><span className='mr-3'><ImGoogle></ImGoogle></span>Sign in with Google</button>
                             <p>Already have an account? <Link to="/login" className=" text-teal-800" >Please Login.</Link></p>

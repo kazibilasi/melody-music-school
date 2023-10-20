@@ -19,7 +19,7 @@ const SelectedClasses = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://music-school-server-nu.vercel.app/carts/${item._id}`, {
+                fetch(`http://localhost:5000/carts/${item._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -84,7 +84,7 @@ const SelectedClasses = () => {
                                     <button className="btn btn-ghost btn-xs">${item.price}</button>
 
                                 </td>
-                                <Link to="/dashboard/payment"><button className='btn btn-sm mt-5 rounded-3xl'>Enroll now</button></Link>
+                                <Link to={`/dashboard/payment/${item._id}`}><button className='btn btn-sm mt-5 rounded-3xl'>Enroll now</button></Link>
 
                                 <td>
                                     <button onClick={() => handleDelete(item)} className="btn btn-ghost  btn-lg "><AiFillDelete className=' text-3xl'></AiFillDelete></button>

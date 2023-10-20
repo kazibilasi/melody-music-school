@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Instructor from './Instructor';
+import { AuthContext } from '../AuthProvider';
 
 
 const Instructors = () => {
     const [instructors, setInstructors] = useState([]);
     useEffect(() => {
-        fetch('https://music-school-server-nu.vercel.app/Instructors')
+        fetch('http://localhost:5000/Instructors')
             .then(res => res.json())
             .then(data => {
 
                 setInstructors(data)
+            
             })
 
     }, [])

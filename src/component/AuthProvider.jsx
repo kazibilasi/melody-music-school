@@ -36,24 +36,26 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            setLoading(false)
             setUser(currentUser)
             if (currentUser) {
-                console.log(currentUser.email)
-                axios.post('https://music-school-server-nu.vercel.app/jwt', { email: currentUser.email })
+                axios.post('http://localhost:5000/jwt', { email: currentUser?.email })
                     .then(data => {
-                        localStorage.setItem('access-token', data.data.token)
                         setLoading(false)
+                        localStorage.setItem('access-token', data.data.token)
+
                     })
             }
-
             else {
                 localStorage.removeItem('access-token')
             }
-        }) 
+            console.log(currentUser)
+
+        })
         return () => {
-            unsubscribe();
+            return unsubscribe();
         }
-    }, [])
+    }, [user])
 
 
     const signInWithGoogle = () => {

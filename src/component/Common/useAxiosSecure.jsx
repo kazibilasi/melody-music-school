@@ -3,15 +3,17 @@ import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider';
 
+
 const useAxiosSecure = () => {
 
     const navigate = useNavigate()
     const { logOut } = useContext(AuthContext)
     const axiosSecure = axios.create({
-        baseURL: 'https://music-school-server-nu.vercel.app'
-
-
+        baseURL: 'http://localhost:5000'
+    
+    
     })
+   
 
     useEffect(() => {
         axiosSecure.interceptors.request.use((config) => {
