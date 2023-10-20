@@ -9,7 +9,7 @@ const useAxiosSecure = () => {
     const navigate = useNavigate()
     const { logOut } = useContext(AuthContext)
     const axiosSecure = axios.create({
-        baseURL: 'http://localhost:5000'
+        baseURL: 'https://music-school-server-nu.vercel.app'
     
     
     })

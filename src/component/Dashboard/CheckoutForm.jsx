@@ -93,7 +93,7 @@ const CheckoutForm = ({ cart, price,seats, selectedItem }) => {
                 .then(res => {
                     if (res.data.insertedId) {
                         const options = {method:'PUT', headers: {'content-type': 'application/json'}}
-                        fetch(`http://localhost:5000/seat/${selectedItem}`, options)
+                        fetch(`https://music-school-server-nu.vercel.app/seat/${selectedItem}`, options)
                         .then(res=> res.json())
                         .then(data=>console.log(data))
 

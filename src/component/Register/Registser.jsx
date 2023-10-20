@@ -30,7 +30,7 @@ const Register = () => {
                 console.log(loggedUser)
                 form.reset();
                 const saveUser = { name: name, email: email }
-                fetch('http://localhost:5000/users', {
+                fetch('https://music-school-server-nu.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -60,7 +60,7 @@ const Register = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
                 const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
-                fetch('http://localhost:5000/users', {
+                fetch('https://music-school-server-nu.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

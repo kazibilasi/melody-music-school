@@ -6,7 +6,7 @@ import { AuthContext } from '../AuthProvider';
 import Swal from 'sweetalert2';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useCommon from '../Common/useCommon';
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 
 const Lesson = ({ item }) => {
@@ -22,7 +22,7 @@ const Lesson = ({ item }) => {
 
         if (user && user.email) {
             const selectItems = { selectItemsId: _id, name, seats, instructor, image, price, email: user.email }
-            fetch('http://localhost:5000/carts', {
+            fetch('https://music-school-server-nu.vercel.app/carts', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -63,34 +63,37 @@ const Lesson = ({ item }) => {
 
     return (
         <div >
-            <motion.div
+            {/* <motion.div
                 className="container mx-auto"
                 whileHover={{ scale: 1.1, rotate: 360 }}
 
             >
-                <div className="card w-96 container mx-auto ">
-                    <figure><img className=' image-full w-full h-full' src={item.image} alt="car!" /></figure>
-                    <div className="card-body text-xl">
-                        <h2 className="card-title">{item.name}</h2>
-                        <p>Instructor: {item.instructor}</p>
-                        <p>Seats: {item.seats}</p>
-                        <p>Price: ${item.price}</p>
-                        <p >
-                            <Rating
-                                style={{ maxWidth: 110 }}
-                                value={item.ratings}
+                
+            </motion.div> */}
 
 
-                            />
-                        </p>
-                        <div className="card-actions justify-end">
-                            <button onClick={() => handleAddToSelect(item)} className="badge bg-teal-400 text-white border-none p-4  badge-outline">Select</button>
-                            <Link to="/dashboard/payment"> <button className="badge bg-teal-400 text-white border-none p-4 badge-outline">Enroll Now</button></Link>
+            <div className="card w-96 container mx-auto ">
+                <figure><img className=' image-full w-full h-full' src={item.image} alt="car!" /></figure>
+                <div className="card-body text-xl">
+                    <h2 className="card-title">{item.name}</h2>
+                    <p>Instructor: {item.instructor}</p>
+                    <p>Seats: {item.seats}</p>
+                    <p>Price: ${item.price}</p>
+                    <p >
+                        <Rating
+                            style={{ maxWidth: 110 }}
+                            value={item.ratings}
 
-                        </div>
+
+                        />
+                    </p>
+                    <div className="card-actions justify-end">
+                        <button onClick={() => handleAddToSelect(item)} className="badge bg-teal-400 text-white border-none p-4  badge-outline">Select</button>
+                        <Link to="/dashboard/payment"> <button className="badge bg-teal-400 text-white border-none p-4 badge-outline">Enroll Now</button></Link>
+
                     </div>
                 </div>
-            </motion.div>
+            </div>
         </div>
     );
 };

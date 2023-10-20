@@ -10,7 +10,7 @@ const EnrolledClasses = () => {
         queryKey: ['payments', user?.email],
         enabled: !loading && !!user?.email,
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/payments', {
+            const res = await fetch('https://music-school-server-nu.vercel.app/payments', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('access-token')}`
                 }
